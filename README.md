@@ -10,7 +10,7 @@ express-session: req.session 사용하기 위한 패키지
 mongoose: mongoDB와 직접적인 연동 패키지  
 morgan: method, path, statusCode, AccessTime 등 요청 추적 패키지  
 nanoid: 랜덤 변수 패키지  
-pug: 렌더링 템플릿 패키지  
+pug: 렌더링 템플릿 패키지
 
 - devDependencies
 
@@ -25,3 +25,36 @@ sass-loader: webpack에서 변환할 loader 패키지
 style-loader: webpack에서 변환할 loader 패키지  
 webpack: 언어를 압축 및 변환하는 패키지  
 webpack-cli: webpack 부가 패키지
+
+---
+
+## docker-compose
+
+```yaml
+version: "3.8"
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ./.db/mongodata:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=<username>
+      - MONGO_INITDB_ROOT_PASSWORD=<password>
+      - MONGO_INITDB_DATABASE=<db>
+```
+
+mongoDB의 기본 포트는 27017이고, username, password, db를 지정하면 해당 유저, 데이터베이스가 생성된다.
+
+<br>
+
+## .env
+
+mongoDB 데이터베이스 연결 방법
+
+`DB_URL=mongodb://<username>:<password>@<host>:<port>/<db>`
+
+데이터베이스 유저, 비밀번호로 권한 승인, 주소를 통해 접근, 사용할 데이터베이스 선택

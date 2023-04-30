@@ -1,0 +1,8 @@
+node_modules/
+.db/
+assets/
+scss/
+
+.env
+*.scss
+*.yaml
