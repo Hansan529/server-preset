@@ -6,3 +6,4 @@ scss/
 .env
 *.scss
 *.yaml
+# .gitignore
